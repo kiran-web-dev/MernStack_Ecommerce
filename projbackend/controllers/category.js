@@ -29,7 +29,7 @@ exports.getCategory = (req, res) =>{
 };
 
 exports.getAllCategory = (req, res) =>{
-    Category.find.exec((err, categories) =>{
+    Category.find().exec((err, categories) =>{
         if(err){
             return res.status(400).json({
                 error: "Not able to get categories from DB"
@@ -53,7 +53,7 @@ exports.updateCategory =(req, res) =>{
     })
 };
 
-exports.removeCategory =(req, res) =>{
+exports.removeCategory =(req, res) =>{ 
     const category = req.category;
     category.remove((err, category) =>{
         if(err){
@@ -62,7 +62,7 @@ exports.removeCategory =(req, res) =>{
             })
         }
         res.json({
-            message: "Deleted Successfully"
+            message: `Successfully Deleted the Category: ${category.name}`
         });
     })
 };
