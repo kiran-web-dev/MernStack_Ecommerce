@@ -14,7 +14,7 @@ const {
 } = require("../controllers/product")
 const { getUserById } =require("../controllers/user")
 const {isSignedIn,isAuthenticated,isAdmin} =require("../controllers/auth");
-const { options } = require("./auth");
+
 
 //Params
 router.param("userId", getUserById);
