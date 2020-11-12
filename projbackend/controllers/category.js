@@ -35,7 +35,7 @@ exports.getAllCategory = (req, res) => {
         error: "Not able to get categories from DB",
       });
     }
-    res.json({ categories });
+    res.json(categories);
   });
 };
 
