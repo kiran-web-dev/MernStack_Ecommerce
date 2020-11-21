@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Payment from "../paymentGateway/Payment";
 import "../styles.css";
 //import { API } from "../backend";
 import Base from "./Base";
@@ -13,7 +14,7 @@ const Cart = () => {
     setProducts(loadCart());
   }, [reload]);
 
-  const loadAllProducts = () => {
+  const loadAllProducts = (products) => {
     return (
       <div className="row">
         {products.map((product, index) => {
@@ -44,8 +45,16 @@ const Cart = () => {
   return (
     <Base title="Cart Page" description="Ready to checkout">
       <div className="row text-center">
-        <div className="col-6">{loadAllProducts()}</div>
-        <div className="col-6">{loadCheckout()}</div>
+        <div className="col-6">
+          {products.length > 0 ? (
+            loadAllProducts(products)
+          ) : (
+            <h3>no Products in cart</h3>
+          )}
+        </div>
+        <div className="col-6">
+          <Payment products={products} setReload={setReload} />
+        </div>
       </div>
     </Base>
   );
