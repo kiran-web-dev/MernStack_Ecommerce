@@ -12,7 +12,10 @@ const Footer = () => {
           </a>
           <h6 className="text-muted">
             Developed By
-            <a href="" className="text-warning">
+            <a
+              href="https://github.com/kiran-web-dev/"
+              className="text-warning"
+            >
               Kiran Hegde
             </a>
           </h6>

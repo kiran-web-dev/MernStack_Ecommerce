@@ -27,13 +27,11 @@ const Home = () => {
     <Base title="Home Page" description="Here is the description of Home">
       <div className="row">
         <h1 className="text-black">All of T shirts</h1>
-        <div className="row">
+        <div className="row text-center">
           {products.map((product, index) => {
             return (
               <div key={index} className="col-4 mb-4">
-                <button className="btn btn-success btn-sm">
-                  <Card product={product} />
-                </button>
+                <Card product={product} />
               </div>
             );
           })}

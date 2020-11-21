@@ -5,14 +5,14 @@ import Navigation from "./Navigation";
 const Base = ({
   title = "My title",
   description = "My Description",
-  className = "bg-dark text-white p-4",
+  className = "text-black p-3",
   children,
 }) => {
   return (
     <div>
       <Navigation />
       <div className="container-fluid">
-        <div className="jumbotron bg-dark text-white text-center">
+        <div className="jumbotron text-black text-center">
           <h2 className="display-4">{title}</h2>
           <p className="lead">{description}</p>
         </div>

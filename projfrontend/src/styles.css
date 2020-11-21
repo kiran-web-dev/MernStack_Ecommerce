@@ -5,6 +5,11 @@
 }
 
 body {
-  background: #343a40;
+  background: #eaf0f1;
+  /*  #343a40 */
   height: 100%;
+}
+
+.card-theme {
+  background: #dae0e2;
 }

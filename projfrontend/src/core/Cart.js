@@ -7,23 +7,28 @@ import { loadCart } from "./helper/cartHelper";
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     setProducts(loadCart());
-  }, []);
+  }, [reload]);
 
   const loadAllProducts = () => {
     return (
-      <div>
-        <h2>This section is to load products</h2>
-        {products.map((product, index) => (
-          <Card
-            key={index}
-            product={product}
-            addToCart={false}
-            removeFromCart={true}
-          />
-        ))}
+      <div className="row">
+        {products.map((product, index) => {
+          return (
+            <div key={index} className="col-6 mb-2">
+              <Card
+                product={product}
+                addToCart={false}
+                removeFromCart={true}
+                setReload={setReload}
+                reload={reload}
+              />
+            </div>
+          );
+        })}
       </div>
     );
   };
