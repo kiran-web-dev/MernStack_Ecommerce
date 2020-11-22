@@ -37,8 +37,9 @@ const Payment = ({ products, setReload = (f) => f, reload = undefined }) => {
   const showbtDropIn = () => {
     return (
       <div>
-        {info.clientToken !== null && products.length > 0 ? (
+        {info.clientToken !== null && products.length > 0 && (
           <div>
+            <h3>Your bill is {getAmount()}</h3>
             <DropIn
               options={{ authorization: info.clientToken }}
               onInstance={(instance) => (info.instance = instance)}
@@ -52,8 +53,6 @@ const Payment = ({ products, setReload = (f) => f, reload = undefined }) => {
               Buy
             </button>
           </div>
-        ) : (
-          <h3>Please Login or add something to cart</h3>
         )}
       </div>
     );
@@ -71,8 +70,14 @@ const Payment = ({ products, setReload = (f) => f, reload = undefined }) => {
       processPayment(userId, token, paymentData)
         .then((response) => {
           setInfo({ ...info, success: response.success, loading: false });
-          //TODO: emptycart
-          //TODO: forceReload
+          const orerData = {
+            products: products,
+            transaction_id: response.transaction.id,
+            amount: response.transaction.amount,
+          };
+          createOrder(userId, token, orerData);
+          cartEmpty(() => console.log("did cart empty"));
+          setReload(!reload);
         })
         .catch((err) => {
           setInfo({ ...info, loading: false, success: false });
@@ -88,12 +93,7 @@ const Payment = ({ products, setReload = (f) => f, reload = undefined }) => {
     return amount;
   };
 
-  return (
-    <div>
-      <h3>Your bill is {getAmount()}</h3>
-      {showbtDropIn()}
-    </div>
-  );
+  return <div>{showbtDropIn()}</div>;
 };
 
 export default Payment;

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Payment from "../paymentGateway/Payment";
 import "../styles.css";
-//import { API } from "../backend";
 import Base from "./Base";
 import Card from "./Card";
 import { loadCart } from "./helper/cartHelper";
+import { isAuthenticated } from "../auth/helper";
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
@@ -49,10 +50,20 @@ const Cart = () => {
           {products.length > 0 ? (
             loadAllProducts(products)
           ) : (
-            <h3>no Products in cart</h3>
+            <div className="mb-5">
+              <h3 className="text-black mb-5">Add Something to Cart </h3>
+              <Link to="/">
+                <button className="btn btn-outline btn-warning">
+                  Explore Products
+                </button>
+              </Link>
+            </div>
           )}
         </div>
         <div className="col-6">
+          {!isAuthenticated() && (
+            <h3 className="text-black">Login to Get Payment Option</h3>
+          )}
           <Payment products={products} setReload={setReload} />
         </div>
       </div>
