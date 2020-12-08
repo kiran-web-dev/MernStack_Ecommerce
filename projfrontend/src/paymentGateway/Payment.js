@@ -74,9 +74,10 @@ const Payment = ({ products, setReload = (f) => f, reload = undefined }) => {
             products: products,
             transaction_id: response.transaction.id,
             amount: response.transaction.amount,
+            status: "Recieved",
           };
           createOrder(userId, token, orerData);
-          cartEmpty(() => console.log("did cart empty"));
+          cartEmpty(() => console.log("cart empty"));
           setReload(!reload);
         })
         .catch((err) => {

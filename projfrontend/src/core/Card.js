@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { addItemToCart, removeItemFromCart } from "./helper/cartHelper";
 import ImageHelper from "./helper/ImageHelper";
 
@@ -35,9 +35,9 @@ const Card = ({
       addToCart && (
         <button
           onClick={addThisToCart}
-          className="btn btn-block btn-outline-success mt-2 mb-2"
+          className="btn rounded btn-primary btn-sm "
         >
-          Add to Cart
+          <i className="fa fa-shopping-cart"></i> Add to Cart
         </button>
       )
     );
@@ -51,29 +51,39 @@ const Card = ({
             removeItemFromCart(product._id);
             setReload(!reload);
           }}
-          className="btn btn-block btn-outline-danger mt-2 mb-2"
+          className="btn rounded btn-outline-danger btn-sm "
         >
-          Remove from cart
+          <i className="fa fa-shopping-cart fa-flip-horizontal "></i> Remove
         </button>
       )
     );
   };
-
+  //<span className="mycard-title">{cardTitle}</span>
   return (
-    <div className="card text-white bg-dark border border-info">
-      <div className="card-header lead">{cardTitle}</div>
-      <div className="card-body">
+    <div className="mycard">
+      <div className="mycard-header">
         {getRedirect(redirect)}
         <ImageHelper product={product} />
-        <p className="lead bg-success font-weight-normal text-wrap">
-          {cardDescription}
-        </p>
+      </div>
+
+      <span className="mycard-summary">
+        <span className="mycard-title">{cardTitle}</span>
         <p className="btn btn-success rounded  btn-sm px-4">
           <i className="fa fa-rupee"></i> {cardPrice}
         </p>
-        <div className="row">
-          <div className="col-12">{showAddToCart(addToCart)}</div>
-          <div className="col-12">{showRemoveFromCart(removeFromCart)}</div>
+      </span>
+      <div className="row mycard-meta">
+        <div className="col-6">
+          {showAddToCart(addToCart)}
+          {showRemoveFromCart(removeFromCart)}
+        </div>
+        <div className="col-6">
+          <Link
+            to={`/product/${product._id}`}
+            className="btn rounded btn-secondary btn-sm"
+          >
+            <i className="fa fa-info-circle"></i> Details
+          </Link>
         </div>
       </div>
     </div>

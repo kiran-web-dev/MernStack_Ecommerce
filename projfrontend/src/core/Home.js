@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "../styles.css";
+//import "../styles.css";
+import "../newStyles.css";
+
 //import { API } from "../backend";
 import Base from "./Base";
 import Card from "./Card";
@@ -25,12 +27,13 @@ const Home = () => {
 
   return (
     <Base title="Home Page" description="Here is the description of Home">
-      <div className="row">
-        <h1 className="text-black">All of T shirts</h1>
-        <div className="row text-center">
+      <h1 className="text-black">All of T shirts</h1>
+
+      <div className="mycontainer">
+        <div className="mycards text-center">
           {products.map((product, index) => {
             return (
-              <div key={index} className="col-4 mb-4">
+              <div key={index}>
                 <Card product={product} />
               </div>
             );
