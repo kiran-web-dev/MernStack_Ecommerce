@@ -78,7 +78,7 @@ const Signin = () => {
         <div className="col-md-6 offset-sm-3 text-left">
           <form>
             <div className="form-group">
-              <label className="text-light">Email</label>
+              <label className="text-black">Email</label>
               <input
                 onChange={handleChange("email")}
                 className="form-control"
@@ -87,7 +87,7 @@ const Signin = () => {
               />
             </div>
             <div className="form-group">
-              <label className="text-light">Password</label>
+              <label className="text-black">Password</label>
               <input
                 onChange={handleChange("password")}
                 className="form-control"
@@ -110,10 +110,8 @@ const Signin = () => {
       {loadingMessage()}
       {errorMessage()}
       {performRedirect()}
-      <p className="text-white text-center">{JSON.stringify(values)}</p>
     </Base>
   );
 };
 
 export default Signin;
-//

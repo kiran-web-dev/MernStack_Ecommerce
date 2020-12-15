@@ -66,7 +66,7 @@ const Card = ({
         <ImageHelper product={product} />
       </div>
 
-      <span className="mycard-summary">
+      <span className="">
         <span className="mycard-title">{cardTitle}</span>
         <p className="btn btn-success rounded  btn-sm px-4">
           <i className="fa fa-rupee"></i> {cardPrice}

@@ -46,7 +46,7 @@ const Signup = () => {
         <div className="col-md-6 offset-sm-3 text-left">
           <form>
             <div className="form-group">
-              <label className="text-light">Name</label>
+              <label className="text-black">Name</label>
               <input
                 className="form-control"
                 onChange={handleChange("name")}
@@ -55,7 +55,7 @@ const Signup = () => {
               />
             </div>
             <div className="form-group">
-              <label className="text-light">Email</label>
+              <label className="text-black">Email</label>
               <input
                 className="form-control"
                 onChange={handleChange("email")}
@@ -64,7 +64,7 @@ const Signup = () => {
               />
             </div>
             <div className="form-group">
-              <label className="text-light">Password</label>
+              <label className="text-black">Password</label>
               <input
                 className="form-control"
                 onChange={handleChange("password")}
@@ -117,7 +117,6 @@ const Signup = () => {
         {successMessage()}
         {errorMessage()}
         {signupForm()}
-        <p className="text-white text-center">{JSON.stringify(values)}</p>
       </Base>
     </div>
   );

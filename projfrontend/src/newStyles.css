@@ -81,12 +81,9 @@
 .mycard span {
   display: block;
 }
-.mycard .mycard-summary {
-  /* padding: 3% 4% 0.1%; */
-}
 .mycard .mycard-header {
   position: relative;
-  height: 180px;
+  /* height: 180px; */
   overflow: hidden;
   background-repeat: no-repeat;
   background-size: cover;
@@ -99,7 +96,7 @@
 }
 .mycard .mycard-header:hover,
 .mycard .mycard-header:focus {
-  background-color: rgba(255, 255, 255, 0);
+  /* background-color: rgba(255, 255, 255, 0); */
 }
 .mycard .mycard-title {
   /* background: rgba(157, 187, 63, 0.85); */
@@ -108,7 +105,7 @@
   font-family: "Merienda", cursive;
   /* font-family: "Roboto Condensed", sans-serif; */
   text-transform: uppercase;
-  /* position: absolute; */
+  position: relative;
   bottom: 0;
   width: 100%;
 }
