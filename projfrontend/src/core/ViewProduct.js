@@ -28,7 +28,7 @@ function ViewProduct({ match }) {
     return (
       <button
         onClick={addThisToCart}
-        className="btn rounded btn-primary btn-sm "
+        className="btn rounded btn-primary btn-md btn-block"
       >
         <i className="fa fa-shopping-cart"></i> Add to Cart
       </button>
@@ -56,17 +56,18 @@ function ViewProduct({ match }) {
         <div className="viewproduct-img">
           {getRedirect(redirect)}
           <ImageHelper product={product} />
+          <h4 className="text-black text-center">{product.name}</h4>
         </div>
         <div className="viewproduct-details">
           <section>
-            <h1 className="text-black">{product.description}</h1>
-            <span className="">
-              <p className="btn btn-success rounded  btn-sm px-4">
-                <i className="fa fa-rupee"></i> {product.price}
+            <p className="text-black text-md-left">{product.description}</p>
+            <p>
+              <p className="price-text">
+                <i className="fa fa-rupee rupee"></i> {product.price}
               </p>
-            </span>
-            {showAddToCart()}
+            </p>
           </section>
+          {showAddToCart()}
         </div>
       </div>
     </Base>

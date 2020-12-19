@@ -68,8 +68,8 @@ const Card = ({
 
       <span className="">
         <span className="mycard-title">{cardTitle}</span>
-        <p className="btn btn-success rounded  btn-sm px-4">
-          <i className="fa fa-rupee"></i> {cardPrice}
+        <p className="text-center price-text">
+          <i className="fa fa-rupee rupee"></i> {cardPrice}
         </p>
       </span>
       <div className="row mycard-meta">

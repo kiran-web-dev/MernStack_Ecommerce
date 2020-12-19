@@ -31,6 +31,7 @@
   -webkit-border-radius: 4px;
   border-radius: 4px;
 }
+
 @media (max-width: 769px) {
   .mycard {
     display: flex;
@@ -38,16 +39,27 @@
     flex-direction: column;
     margin-bottom: 20px;
   }
+  /* view Product page */
   .viewproduct {
     display: flex;
     width: 100%;
     max-width: none;
-
     flex-direction: column;
-    /* justify-content: space-around; */
   }
   .viewproduct-img {
-    width: 100%;
+    max-width: 100%;
+  }
+
+  /* view Cart page */
+  .viewcart {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .viewcart-prod {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }
 @media (min-width: 769px) {
@@ -59,15 +71,47 @@
   .mycard:nth-child(even) {
     margin-right: 0;
   }
+  .viewproduct-img {
+    max-width: 50%;
+  }
+  /* view Products page */
   .viewproduct {
     display: flex;
     flex-direction: row;
     width: 100%;
-
-    /* justify-content: space-around; */
+    justify-content: center;
   }
   .viewproduct-img {
-    max-width: 60%;
+    position: relative;
+    margin: 3%;
+    /* max-width: 50%; */
+    -moz-box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+    box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+  .viewproduct-details {
+    margin: 3%;
+  }
+
+  /* view Cart page */
+  .viewcart {
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+    justify-content: space-around;
+  }
+  .viewcart-prod {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .viewcart-prod-child {
+    max-width: 350px;
+    flex: 1 0 46%;
   }
 }
 @media (min-width: 980px) {
@@ -154,19 +198,18 @@
   max-height: 2em;
 }
 
-.viewproduct-img {
-  /* position: relative; */
-  margin: 3%;
-  /* max-width: 50%; */
-  -moz-box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
-  box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
+.price-text {
+  color: #212121;
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: justify;
+  text-justify: inter-word;
+  vertical-align: baseline;
 }
-.viewproduct-details {
-  margin: 3%;
+.rupee {
+  font-weight: lighter;
+  font-size: 16px;
 }
 
 img {

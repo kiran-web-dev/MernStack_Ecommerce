@@ -17,36 +17,42 @@ const Cart = () => {
 
   const loadAllProducts = (products) => {
     return (
-      <div className="row">
-        {products.map((product, index) => {
-          return (
-            <div key={index} className="col-6 mb-2">
-              <Card
-                product={product}
-                addToCart={false}
-                removeFromCart={true}
-                setReload={setReload}
-                reload={reload}
-              />
-            </div>
-          );
-        })}
+      <div className="">
+        <div className="viewcart-prod">
+          {products.map((product, index) => {
+            return (
+              <div key={index} className="viewcart-prod-child mb-2">
+                <Card
+                  product={product}
+                  addToCart={false}
+                  removeFromCart={true}
+                  setReload={setReload}
+                  reload={reload}
+                />
+              </div>
+            );
+          })}
+        </div>
+        {loadAddMore()}
       </div>
     );
   };
-
-  const loadCheckout = () => {
+  const loadAddMore = () => {
     return (
-      <div>
-        <h2>This section is for checkout</h2>
+      <div className="">
+        <Link to="/">
+          <button className="btn btn-outline btn-warning">
+            Add More Products
+          </button>
+        </Link>
       </div>
     );
   };
 
   return (
     <Base title="Cart Page" description="Ready to checkout">
-      <div className="row text-center">
-        <div className="col-6">
+      <div className="viewcart text-center">
+        <div className="">
           {products.length > 0 ? (
             loadAllProducts(products)
           ) : (
@@ -60,7 +66,7 @@ const Cart = () => {
             </div>
           )}
         </div>
-        <div className="col-6">
+        <div className="">
           {!isAuthenticated() && (
             <h3 className="text-black">Login to Get Payment Option</h3>
           )}
