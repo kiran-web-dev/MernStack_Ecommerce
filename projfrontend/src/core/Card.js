@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
-import { addItemToCart, removeItemFromCart } from "./helper/cartHelper";
+import {
+  addItemToCart,
+  loadCart,
+  removeItemFromCart,
+} from "./helper/cartHelper";
 import ImageHelper from "./helper/ImageHelper";
 
 const Card = ({
@@ -12,7 +16,11 @@ const Card = ({
   reload = undefined,
 }) => {
   const [redirect, setRedirect] = useState(false);
+  const [goto, setGoto] = useState(false);
+  const [cartupdated, setCartupdated] = useState(false);
+
   const [count, setCount] = useState(product.count);
+  let cart;
 
   const cardTitle = product ? product.name : "A Photo Title";
   const cardDescription = product
@@ -21,9 +29,46 @@ const Card = ({
   const cardPrice = product ? product.price : "Default";
 
   const addThisToCart = () => {
-    addItemToCart(product, () => setRedirect(true));
+    addItemToCart(product, () => {
+      addToCart = false;
+      setCartupdated(!cartupdated);
+    });
   };
 
+  useEffect(() => {
+    showGoToCart(goto);
+  }, [goto, cartupdated]);
+
+  useEffect(() => {
+    whosInCart(product._id);
+    setCartupdated(true);
+  }, [cartupdated]);
+
+  const whosInCart = (productId) => {
+    cart = loadCart();
+    cart.forEach((obj) => {
+      if (productId === obj._id) {
+        setGoto(true);
+      }
+    });
+  };
+  const showGoToCart = (goto) => {
+    return (
+      goto &&
+      !removeFromCart && (
+        <button
+          onClick={shouldRedirect}
+          className="btn rounded btn-warning btn-sm "
+        >
+          <i className="fa fa-shopping-cart"></i> Go to Cart
+        </button>
+      )
+    );
+  };
+
+  const shouldRedirect = () => {
+    setRedirect(true);
+  };
   const getRedirect = (redirect) => {
     if (redirect) {
       return <Redirect to="/cart" />;
@@ -32,9 +77,13 @@ const Card = ({
 
   const showAddToCart = (addToCart) => {
     return (
-      addToCart && (
+      addToCart &&
+      !goto && (
         <button
-          onClick={addThisToCart}
+          onClick={() => {
+            addThisToCart();
+            setReload(!reload);
+          }}
           className="btn rounded btn-primary btn-sm "
         >
           <i className="fa fa-shopping-cart"></i> Add to Cart
@@ -75,6 +124,7 @@ const Card = ({
       <div className="row mycard-meta">
         <div className="col-6">
           {showAddToCart(addToCart)}
+          {showGoToCart(goto)}
           {showRemoveFromCart(removeFromCart)}
         </div>
         <div className="col-6">
