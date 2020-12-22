@@ -2,6 +2,7 @@ import React from "react";
 import Base from "../core/Base";
 import { isAuthenticated } from "../auth/helper/index";
 import { Link } from "react-router-dom";
+import AdminNav from "./AdminNav";
 
 const AdminDashBoard = () => {
   const { name, email, role } = isAuthenticated().user;
@@ -61,17 +62,31 @@ const AdminDashBoard = () => {
     );
   };
   return (
-    <Base
-      title="Welcome to Admin Area"
-      description="Manage the things here"
-      className="container bg-info p-4"
-    >
-      <div className="row">
-        <div className="col-3">{adminLeftSide()}</div>
-        <div className="col-9">{adminRightSide()}</div>
-      </div>
-    </Base>
+    <React.Fragment>
+      <AdminNav />
+      <Base
+        title="Welcome to Admin Area"
+        description="Manage the things here"
+        className=""
+      ></Base>
+    </React.Fragment>
   );
 };
 
 export default AdminDashBoard;
+//container bg-info p-4
+/*<div className="row">
+        <div className="col-3">{adminLeftSide()}</div>
+        <div className="col-9">{adminRightSide()}</div>
+      </div> */
+
+/*
+
+      <Base
+      title="Welcome to Admin Area"
+      description="Manage the things here"
+      className=""
+    >
+      <AdminNav />
+    </Base>
+    */
