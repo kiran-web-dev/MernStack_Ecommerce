@@ -2,12 +2,7 @@ import React from "react";
 import Footer from "./Footer";
 import Navigation from "./Navigation";
 
-const Base = ({
-  title = "My title",
-  description = "My Description",
-  className = "text-black p-3",
-  children,
-}) => {
+const Base = ({ title = "", description = "", className = "", children }) => {
   return (
     <div>
       <Navigation />

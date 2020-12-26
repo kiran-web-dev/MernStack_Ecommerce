@@ -4,7 +4,7 @@ import { isAuthenticated } from "../auth/helper/index";
 import { Link } from "react-router-dom";
 import AdminNav from "./AdminNav";
 
-const AdminDashBoard = () => {
+const AdminDashBoard = ({ className = "", children }) => {
   const { name, email, role } = isAuthenticated().user;
 
   const adminLeftSide = () => {
@@ -62,25 +62,32 @@ const AdminDashBoard = () => {
     );
   };
   return (
-    <React.Fragment>
-      <AdminNav />
-      <Base
-        title="Welcome to Admin Area"
-        description="Manage the things here"
-        className=""
-      ></Base>
-    </React.Fragment>
+    <Base
+      title="Welcome to Admin Area"
+      description="Manage the things here"
+      className="container bg-info p-4"
+    >
+      <div className="admin-dash">
+        <div className="admin-dash-nav">{<AdminNav />}</div>
+        <div className="admin-dash-child">
+          <div className={className}>{children}</div>
+        </div>
+      </div>
+    </Base>
   );
 };
 
 export default AdminDashBoard;
 //container bg-info p-4
+//<AdminNav />
 /*<div className="row">
         <div className="col-3">{adminLeftSide()}</div>
         <div className="col-9">{adminRightSide()}</div>
       </div> */
 
 /*
+ 
+
 
       <Base
       title="Welcome to Admin Area"

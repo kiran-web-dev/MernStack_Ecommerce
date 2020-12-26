@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Base from "../core/Base";
+
 import { Link } from "react-router-dom";
 import { isAuthenticated } from "../auth/helper";
 import { deleteProduct, getProducts } from "./helper/adminapicall";
+import AdminDashBoard from "../user/AdminDashBoard";
 
 const ManageProducts = (props) => {
   const [products, setProducts] = useState([]);
@@ -33,11 +34,8 @@ const ManageProducts = (props) => {
   };
 
   return (
-    <Base title="Welcome admin" description="Manage products here">
+    <AdminDashBoard>
       <h2 className="mb-4">All products:</h2>
-      <Link className="btn btn-info" to={`/admin/dashboard`}>
-        <span className="">Admin Home</span>
-      </Link>
       <div className="row">
         <div className="col-12">
           <h2 className="text-center text-black my-3">
@@ -72,7 +70,7 @@ const ManageProducts = (props) => {
           })}
         </div>
       </div>
-    </Base>
+    </AdminDashBoard>
   );
 };
 

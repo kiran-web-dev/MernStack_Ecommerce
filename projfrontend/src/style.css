@@ -1,4 +1,5 @@
 /* BASIC THEME CONFIGURATION */
+/*
 body {
   color: #797979;
   background: #eaeaea;
@@ -8,6 +9,9 @@ body {
   font-size: 13px;
 }
 
+
+
+*/
 ul li {
   list-style: none;
 }
@@ -32,8 +36,9 @@ ul li {
 #sidebar {
   width: 210px;
   height: 100%;
-  position: fixed;
+  position: relative;
   background: #2f323a;
+  border-radius: 2%;
 }
 
 #sidebar h5 {
@@ -45,56 +50,27 @@ ul li {
   position: relative;
 }
 
-#sidebar .sub-menu > .sub li {
-  padding-left: 32px;
-}
-
-#sidebar .sub-menu > .sub li:last-child {
-  padding-bottom: 10px;
-}
-
-ul.sidebar-menu,
+/* ul.sidebar-menu, */
 ul.sidebar-menu {
   margin: -2px 0 0;
+  margin-top: 15px;
   padding: 0;
 }
 
-ul.sidebar-menu {
-  margin-top: 75px;
-}
-
-#sidebar > ul > li > ul.sub {
-  display: none;
-}
-
-#sidebar > ul > li.active > ul.sub,
-#sidebar > ul > li > ul.sub > li .link {
-  display: block;
-}
-
-ul.sidebar-menu li {
-  background: #2f323a;
-  margin-bottom: 0;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-ul.sidebar-menu li:last-child {
-  border-radius: 0 0 4px 4px;
-  -webkit-border-radius: 0 0 4px 4px;
-}
-
 ul.sidebar-menu li .link {
+  color: #aeb2b7;
+  text-decoration: none;
+  display: block;
+  padding: 0 0 15px 10px;
   font-size: 12px;
-  padding: 6px 0;
-  line-height: 35px;
   height: 35px;
+  line-height: 35px;
+  outline: none;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  color: #aeb2b7;
 }
 
 ul.sidebar-menu li .link:hover {
@@ -127,20 +103,6 @@ ul.sidebar-menu li .link span {
   display: inline-block;
 }
 
-ul.sidebar-menu li .link {
-  color: #aeb2b7;
-  text-decoration: none;
-  display: block;
-  padding: 15px 0 15px 10px;
-  font-size: 12px;
-  outline: none;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-
 ul.sidebar-menu li .link.active,
 ul.sidebar-menu li .link:hover,
 ul.sidebar-menu li .link:focus {
@@ -153,20 +115,6 @@ ul.sidebar-menu li .link:focus {
   -o-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   transition: all 0.3s ease;
-}
-
-ul.sidebar-menu li .link i {
-  font-size: 15px;
-  padding-right: 6px;
-}
-
-ul.sidebar-menu li .link:hover i,
-ul.sidebar-menu li .link:focus i {
-  color: #fff;
-}
-
-ul.sidebar-menu li .link.active i {
-  color: #fff;
 }
 
 /*--sidebar toggle---*/
@@ -194,7 +142,19 @@ ul.sidebar-menu li .link.active i {
 .sidebar-closed #sidebar {
   margin-left: -180px;
 }
-
+.admin-dash {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+.admin-dash-nav {
+  max-width: 210px;
+  min-width: 136px;
+}
+.admin-dash-child {
+  min-width: 65%;
+  margin-top: 35px;
+}
 /*Helpers*/
 
 .centered {
@@ -204,5 +164,9 @@ ul.sidebar-menu li .link.active i {
   margin-top: 25px;
 }
 .nav-collapse.collapse {
-  display: inline;
+  /* display: inline; */
+}
+
+.img-circle {
+  border-radius: 50%;
 }

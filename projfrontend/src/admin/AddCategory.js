@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Base from "../core/Base";
 import { isAuthenticated } from "../auth/helper";
 import { Link } from "react-router-dom";
 import { createCategory } from "./helper/adminapicall";
+import AdminDashBoard from "../user/AdminDashBoard";
 
 const AddCategory = () => {
   const [name, setName] = useState("");
@@ -73,21 +73,23 @@ const AddCategory = () => {
   );
 
   return (
-    <Base
-      title="Create a Category Here"
-      description="Add new category for Tshirts"
-      className="container bg-info p-4"
-    >
+    <AdminDashBoard>
       <div className="row bg-white rounded">
         <div className="col-md-8 offset-md-2">
           {successMessage()}
           {errorMessage()}
           {newCategoryForm()}
-          {goBack()}
         </div>
       </div>
-    </Base>
+    </AdminDashBoard>
   );
 };
 
 export default AddCategory;
+
+/*<Base
+      title="Create a Category Here"
+      description="Add new category for Tshirts"
+      className="container bg-info p-4"
+    >
+    */

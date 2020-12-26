@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Base from "../core/Base";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import {
   getProduct,
@@ -7,6 +6,7 @@ import {
   getCategories,
 } from "./helper/adminapicall";
 import { isAuthenticated } from "../auth/helper/index";
+import AdminDashBoard from "../user/AdminDashBoard";
 
 const UpdateProduct = ({ match }) => {
   const { user, token } = isAuthenticated();
@@ -216,23 +216,24 @@ const UpdateProduct = ({ match }) => {
     </form>
   );
 
-  return (
-    <Base
-      title="Add a Product Here"
-      description="Welcome to Product Creation Section"
-      className="container bg-info p-4"
-    >
-      <Link to="/admin/dashboard" className="btn btn-md btn-dark mb-3 ">
-        Back to Dashboard
+  const goBack = () => (
+    <div className="mt-3">
+      <Link className="btn btn-sm bg-warning mb-3" to="/admin/products">
+        Back
       </Link>
+    </div>
+  );
+  return (
+    <AdminDashBoard>
       <div className="row bg-dark text-white rounded">
         <div className="col-md-8 offset-md-2">
           {successMessage()}
           {errorMessage()}
           {createProductForm()}
+          {goBack()}
         </div>
       </div>
-    </Base>
+    </AdminDashBoard>
   );
 };
 

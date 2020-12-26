@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Base from "../core/Base";
 import { isAuthenticated } from "../auth/helper";
 import { deleteCategory, getCategories } from "./helper/adminapicall";
 import { Link } from "react-router-dom";
+import AdminDashBoard from "../user/AdminDashBoard";
 
 const ManageCategories = () => {
   const [categories, setCategories] = useState([]);
@@ -33,15 +33,13 @@ const ManageCategories = () => {
   };
 
   return (
-    <Base title="Welcome admin" description="Manage Categories here">
+    <AdminDashBoard>
       <h2 className="mb-4">All Categories:</h2>
-      <Link className="btn btn-info" to={`/admin/dashboard`}>
-        <span className="">Admin Home</span>
-      </Link>
+
       <div className="row">
         <div className="col-12">
           <h2 className="text-center text-white my-3">
-            Total {categories.length} products
+            Total {categories.length} categories
           </h2>
 
           {categories.map((category, index) => {
@@ -73,7 +71,7 @@ const ManageCategories = () => {
           })}
         </div>
       </div>
-    </Base>
+    </AdminDashBoard>
   );
 };
 

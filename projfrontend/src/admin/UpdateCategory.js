@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Base from "../core/Base";
 import { isAuthenticated } from "../auth/helper";
 import { Link } from "react-router-dom";
-import {
-  createCategory,
-  getCategory,
-  updateCategory,
-} from "./helper/adminapicall";
+import { getCategory, updateCategory } from "./helper/adminapicall";
+import AdminDashBoard from "../user/AdminDashBoard";
 
 const UpdateCategory = ({ match }) => {
   const [name, setName] = useState("");
@@ -87,18 +83,14 @@ const UpdateCategory = ({ match }) => {
 
   const goBack = () => (
     <div className="mt-5">
-      <Link className="btn btn-sm bg-success mb-3" to="/admin/dashboard">
-        Back to Dashborad
+      <Link className="btn btn-sm bg-warning mb-3" to="/admin/categories">
+        Back
       </Link>
     </div>
   );
 
   return (
-    <Base
-      title="Create a Category Here"
-      description="Add new category for Tshirts"
-      className="container bg-info p-4"
-    >
+    <AdminDashBoard>
       <div className="row bg-white rounded">
         <div className="col-md-8 offset-md-2">
           {successMessage()}
@@ -107,7 +99,7 @@ const UpdateCategory = ({ match }) => {
           {goBack()}
         </div>
       </div>
-    </Base>
+    </AdminDashBoard>
   );
 };
 

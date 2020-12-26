@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Base from "../core/Base";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import { createProduct, getCategories } from "./helper/adminapicall";
 import { isAuthenticated } from "../auth/helper/index";
+import AdminDashBoard from "../user/AdminDashBoard";
 
 const AddProduct = () => {
   const { user, token } = isAuthenticated();
@@ -193,14 +193,7 @@ const AddProduct = () => {
   );
 
   return (
-    <Base
-      title="Add a Product Here"
-      description="Welcome to Product Creation Section"
-      className="container bg-info p-4"
-    >
-      <Link to="/admin/dashboard" className="btn btn-md btn-dark mb-3 ">
-        Back to Dashboard
-      </Link>
+    <AdminDashBoard>
       <div className="row bg-dark text-white rounded">
         <div className="col-md-8 offset-md-2">
           {successMessage()}
@@ -208,7 +201,7 @@ const AddProduct = () => {
           {createProductForm()}
         </div>
       </div>
-    </Base>
+    </AdminDashBoard>
   );
 };
 

@@ -1,60 +1,79 @@
-import React from "react";
+import { React, useState } from "react";
+
 import { Link } from "react-router-dom";
 
 import "../style.css";
 import logo from "./img/kir.jpg";
 
 function AdminNav() {
+  const [navbar, setNavbar] = useState({
+    navbarState: false,
+    navbarClass: "collapse navbar-collapse show",
+  });
+
+  const myToggler = () => {
+    navbar.navbarState
+      ? setNavbar({
+          navbarState: false,
+          navbarClass: "collapse navbar-collapse",
+        })
+      : setNavbar({
+          navbarState: true,
+          navbarClass: "collapse navbar-collapse show",
+        });
+  };
+
   return (
     <aside>
-      <div id="sidebar" className="nav-collapse">
-        <ul className="sidebar-menu" id="nav-accordion">
-          <p className="centered">
-            <a href="profile.html">
+      <nav className="navbar">
+        <button className="navbar-toggler" type="button" onClick={myToggler}>
+          <span className="text-white bg-dark">
+            <i class="fa fa-bars"></i>
+          </span>
+        </button>
+        <div id="sidebar" className={navbar.navbarClass}>
+          <ul className="sidebar-menu" id="nav-accordion">
+            <p className="centered">
               <img
                 src={logo}
                 className="img-circle"
                 width="80"
                 alt="Kiran Hegde"
               />
-            </a>
-          </p>
-          <h5 className="centered">Kiran Hegde</h5>
-          <li className="mt">
-            <a className="active" href="index.html">
+            </p>
+            <h5 className="centered">Kiran Hegde</h5>
+            <li className="mt bg-warning">
               <i className="fa fa-dashboard"></i>
-              <span>Dashboard</span>
-            </a>
-          </li>
-          <li>
-            <Link to="/admin/create/category" className="link">
-              Create Categories
-            </Link>
-          </li>
-          <li>
-            <Link to="/admin/categories" className="link">
-              Manage Categories
-            </Link>
-          </li>
-
-          <li>
-            <Link to="/admin/create/product" className="link">
-              Create Product
-            </Link>
-          </li>
-          <li>
-            <Link to="/admin/products" className="link">
-              Manage Product
-            </Link>
-          </li>
-
-          <li>
-            <Link to="/admin/orders" className="link">
-              Manage Orders
-            </Link>
-          </li>
-        </ul>
-      </div>
+              <span className="text-white ">Dashboard</span>
+            </li>
+            <li>
+              <Link to="/admin/create/category" className="link">
+                Create Categories
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/categories" className="link">
+                Manage Categories
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/create/product" className="link">
+                Create Product
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/products" className="link">
+                Manage Product
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/orders" className="link">
+                Manage Orders
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </aside>
   );
 }
