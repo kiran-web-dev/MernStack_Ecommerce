@@ -39,7 +39,7 @@ const AddProduct = () => {
 
   const preLoad = () => {
     getCategories().then((data) => {
-      console.log(data);
+      // console.log(data);
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
@@ -115,7 +115,7 @@ const AddProduct = () => {
   };
 
   const createProductForm = () => (
-    <form>
+    <form className="text-dark">
       <span>Post photo</span>
       <div className="form-group">
         <label className="btn btn-block btn-success">
@@ -132,7 +132,7 @@ const AddProduct = () => {
         <input
           onChange={handleChange("name")}
           name="photo"
-          className="form-control"
+          className="form-control border border-secondary"
           placeholder="Name"
           value={name}
         />
@@ -141,7 +141,7 @@ const AddProduct = () => {
         <textarea
           onChange={handleChange("description")}
           name="photo"
-          className="form-control"
+          className="form-control border border-secondary"
           placeholder="Description"
           value={description}
         />
@@ -150,7 +150,7 @@ const AddProduct = () => {
         <input
           onChange={handleChange("price")}
           type="number"
-          className="form-control"
+          className="form-control border border-secondary"
           placeholder="Price"
           value={price}
         />
@@ -158,7 +158,7 @@ const AddProduct = () => {
       <div className="form-group">
         <select
           onChange={handleChange("category")}
-          className="form-control"
+          className="form-control border border-secondary"
           placeholder="Category"
         >
           <option>Select</option>
@@ -176,7 +176,7 @@ const AddProduct = () => {
         <input
           onChange={handleChange("stock")}
           type="number"
-          className="form-control"
+          className="form-control border border-secondary"
           placeholder="Quantity"
           value={stock}
         />
@@ -185,7 +185,7 @@ const AddProduct = () => {
       <button
         type="submit"
         onClick={onSubmit}
-        className="btn btn-outline-success mb-3"
+        className="btn btn-outline-success btn-block mb-3"
       >
         Create Product
       </button>
@@ -194,7 +194,8 @@ const AddProduct = () => {
 
   return (
     <AdminDashBoard>
-      <div className="row bg-dark text-white rounded">
+      <h2 className="ml-2 mb-4">New Product:</h2>
+      <div className="row admin-child-theme text-white ">
         <div className="col-md-8 offset-md-2">
           {successMessage()}
           {errorMessage()}

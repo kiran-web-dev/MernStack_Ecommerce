@@ -139,7 +139,7 @@ const UpdateProduct = ({ match }) => {
   };
 
   const createProductForm = () => (
-    <form>
+    <form className="text-dark">
       <span>Post photo</span>
       <div className="form-group">
         <label className="btn btn-block btn-success">
@@ -225,7 +225,8 @@ const UpdateProduct = ({ match }) => {
   );
   return (
     <AdminDashBoard>
-      <div className="row bg-dark text-white rounded">
+      <h2 className="ml-2 mb-4">Update Product:</h2>
+      <div className="row admin-child-theme text-white rounded">
         <div className="col-md-8 offset-md-2">
           {successMessage()}
           {errorMessage()}

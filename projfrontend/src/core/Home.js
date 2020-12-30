@@ -26,7 +26,11 @@ const Home = () => {
   }, []);
 
   return (
-    <Base title="Home Page" description="Here is the description of Home">
+    <Base
+      requireHeader="true"
+      title="Home Page"
+      description="Here is the description of Home"
+    >
       <h1 className="text-black">All of T shirts</h1>
 
       <div className="mycontainer">

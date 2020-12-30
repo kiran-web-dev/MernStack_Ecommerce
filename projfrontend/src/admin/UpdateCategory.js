@@ -91,7 +91,8 @@ const UpdateCategory = ({ match }) => {
 
   return (
     <AdminDashBoard>
-      <div className="row bg-white rounded">
+      <h2 className="ml-2 mb-4">Update Category:</h2>
+      <div className="row  admin-child-theme">
         <div className="col-md-8 offset-md-2">
           {successMessage()}
           {errorMessage()}

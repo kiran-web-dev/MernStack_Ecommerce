@@ -32,7 +32,7 @@ function AdminNav() {
           </span>
         </button>
         <div id="sidebar" className={navbar.navbarClass}>
-          <ul className="sidebar-menu" id="nav-accordion">
+          <ul className="sidebar-menu">
             <p className="centered">
               <img
                 src={logo}
@@ -43,8 +43,12 @@ function AdminNav() {
             </p>
             <h5 className="centered">Kiran Hegde</h5>
             <li className="mt bg-warning">
-              <i className="fa fa-dashboard"></i>
-              <span className="text-white ">Dashboard</span>
+              <Link to="/admin/dashboard" className="link">
+                <i className="fa fa-dashboard"></i>
+                <span>
+                  <h6 className="text-white ">Dashboard</h6>
+                </span>
+              </Link>
             </li>
             <li>
               <Link to="/admin/create/category" className="link">

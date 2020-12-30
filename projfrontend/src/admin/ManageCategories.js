@@ -34,34 +34,35 @@ const ManageCategories = () => {
 
   return (
     <AdminDashBoard>
-      <h2 className="mb-4">All Categories:</h2>
+      <h2 className="ml-2 mb-4">All Categories:</h2>
 
       <div className="row">
-        <div className="col-12">
-          <h2 className="text-center text-white my-3">
-            Total {categories.length} categories
+        <div className="col-12 admin-child-theme">
+          <h2 className="text-center text-dark my-3">
+            Total <span className="text-primary">{categories.length}</span>{" "}
+            categories
           </h2>
 
           {categories.map((category, index) => {
             return (
               <div key={index} className="row text-center mb-2 ">
-                <div className="col-4">
-                  <h3 className="text-white text-left">{category.name}</h3>
+                <div className="col-6">
+                  <h3 className="text-primary text-left">{category.name}</h3>
                 </div>
-                <div className="col-4">
+                <div className="col-3">
                   <Link
-                    className="btn btn-success"
+                    className="btn rounded btn-sm btn-success"
                     to={`/admin/category/update/${category._id}`}
                   >
                     <span className="">Update</span>
                   </Link>
                 </div>
-                <div className="col-4">
+                <div className="col-3">
                   <button
                     onClick={() => {
                       deleteThisCategory(category._id);
                     }}
-                    className="btn btn-danger"
+                    className="btn rounded btn-sm btn-danger"
                   >
                     Delete
                   </button>

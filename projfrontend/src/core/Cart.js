@@ -39,7 +39,7 @@ const Cart = () => {
   };
   const loadAddMore = () => {
     return (
-      <div className="">
+      <div className="mb-5">
         <Link to="/">
           <button className="btn btn-outline btn-warning">
             Add More Products
@@ -50,7 +50,11 @@ const Cart = () => {
   };
 
   return (
-    <Base title="Cart Page" description="Ready to checkout">
+    <Base
+      requireHeader="true"
+      title="Cart Page"
+      description="Ready to checkout"
+    >
       <div className="viewcart text-center">
         <div className="">
           {products.length > 0 ? (
@@ -66,9 +70,21 @@ const Cart = () => {
             </div>
           )}
         </div>
-        <div className="">
+        <div className="mb-4">
           {!isAuthenticated() && (
-            <h3 className="text-black">Login to Get Payment Option</h3>
+            <div>
+              <h3 className="text-black">Login to Get Payment Option</h3>
+              <Link to="/signup">
+                <button className="btn btn-outline btn-sm btn-info">
+                  SignUp
+                </button>
+              </Link>
+              <Link to="/signin">
+                <button className="btn btn-outline btn-sm btn-success">
+                  SignIn
+                </button>
+              </Link>
+            </div>
           )}
           <Payment products={products} setReload={setReload} />
         </div>

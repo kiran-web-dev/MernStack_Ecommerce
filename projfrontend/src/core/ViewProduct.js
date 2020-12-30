@@ -28,7 +28,7 @@ function ViewProduct({ match }) {
     return (
       <button
         onClick={addThisToCart}
-        className="btn rounded btn-primary btn-md btn-block"
+        className="btn rounded btn-primary btn-md btn-block mb-3"
       >
         <i className="fa fa-shopping-cart"></i> Add to Cart
       </button>

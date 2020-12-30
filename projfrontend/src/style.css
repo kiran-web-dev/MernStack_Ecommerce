@@ -34,10 +34,10 @@ ul li {
 /*sidebar navigation*/
 
 #sidebar {
-  width: 210px;
-  height: 100%;
+  /* width: 210px; */
+  height: -5000px;
   position: relative;
-  background: #2f323a;
+  /* background: #2f323a; */
   border-radius: 2%;
 }
 
@@ -55,6 +55,7 @@ ul.sidebar-menu {
   margin: -2px 0 0;
   margin-top: 15px;
   padding: 0;
+  min-height: 63vh;
 }
 
 ul.sidebar-menu li .link {
@@ -148,15 +149,29 @@ ul.sidebar-menu li .link:focus {
   justify-content: start;
 }
 .admin-dash-nav {
-  max-width: 210px;
-  min-width: 136px;
+  margin-top: 2.4rem;
+  background-color: #2f323a;
 }
 .admin-dash-child {
   min-width: 65%;
-  margin-top: 35px;
+  margin-top: 2.4rem;
+  background-color: #e3e7ec;
+  padding: 3% 1.4rem 3% 0;
+  font-family: "Roboto Slab", serif;
+  -moz-box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+  box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
 }
-/*Helpers*/
+.admin-child-theme {
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 8px 8px 2px 0 rgba(82, 84, 107, 0.37);
+  -moz-box-shadow: rgba(82, 84, 107, 0.37) 8px 8px 2px 0;
+  -webkit-box-shadow: rgba(82, 84, 107, 0.37) 8px 8px 2px 0;
+  backdrop-filter: blur(6px);
+  padding-left: 4%;
+}
 
+/*Helpers*/
 .centered {
   text-align: center;
 }
@@ -169,4 +184,13 @@ ul.sidebar-menu li .link:focus {
 
 .img-circle {
   border-radius: 50%;
+}
+@media (max-width: 769px) {
+  .admin-dash {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+@media (min-width: 769px) {
 }

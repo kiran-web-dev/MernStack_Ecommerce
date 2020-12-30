@@ -74,7 +74,7 @@ const Signin = () => {
 
   const signinForm = () => {
     return (
-      <div className="row">
+      <div className="row mb-5">
         <div className="col-md-6 offset-sm-3 text-left">
           <form>
             <div className="form-group">
@@ -105,7 +105,11 @@ const Signin = () => {
   };
 
   return (
-    <Base title="Sign In page" description="A page for Signs in ">
+    <Base
+      requireHeader="true"
+      title="Sign In page"
+      description="Jump back to profile"
+    >
       {signinForm()}
       {loadingMessage()}
       {errorMessage()}

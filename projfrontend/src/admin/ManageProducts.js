@@ -35,32 +35,33 @@ const ManageProducts = (props) => {
 
   return (
     <AdminDashBoard>
-      <h2 className="mb-4">All products:</h2>
+      <h2 className="ml-2 mb-4">All products:</h2>
       <div className="row">
-        <div className="col-12">
+        <div className="col-12 admin-child-theme">
           <h2 className="text-center text-black my-3">
-            Total {products.length} products
+            Total <span className="text-primary">{products.length}</span>{" "}
+            products
           </h2>
           {products.map((product, index) => {
             return (
               <div key={index} className="row text-center mb-2 ">
-                <div className="col-4">
-                  <h3 className="text-black text-left">{product.name}</h3>
+                <div className="col-8">
+                  <h4 className="text-primary text-left">{product.name}</h4>
                 </div>
-                <div className="col-4">
+                <div className="col-2">
                   <Link
-                    className="btn btn-success"
+                    className="btn rounded btn-sm btn-success"
                     to={`/admin/product/update/${product._id}`}
                   >
                     <span className="">Update</span>
                   </Link>
                 </div>
-                <div className="col-4">
+                <div className="col-2">
                   <button
                     onClick={() => {
                       deleteThisProduct(product._id);
                     }}
-                    className="btn btn-danger"
+                    className="btn rounded btn-sm btn-danger"
                   >
                     Delete
                   </button>

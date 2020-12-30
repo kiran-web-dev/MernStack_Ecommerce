@@ -42,7 +42,7 @@ const Signup = () => {
 
   const signupForm = () => {
     return (
-      <div className="row">
+      <div className="row mb-5">
         <div className="col-md-6 offset-sm-3 text-left">
           <form>
             <div className="form-group">
@@ -113,7 +113,11 @@ const Signup = () => {
 
   return (
     <div>
-      <Base title="SignUp page" description="A page for Signup for User">
+      <Base
+        requireHeader="true"
+        title="SignUp page"
+        description="Signup for more valuable service"
+      >
         {successMessage()}
         {errorMessage()}
         {signupForm()}
