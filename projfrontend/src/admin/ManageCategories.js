@@ -38,7 +38,7 @@ const ManageCategories = () => {
 
       <div className="row">
         <div className="col-12 admin-child-theme">
-          <h2 className="text-center text-dark my-3">
+          <h2 className="text-center my-3">
             Total <span className="text-primary">{categories.length}</span>{" "}
             categories
           </h2>

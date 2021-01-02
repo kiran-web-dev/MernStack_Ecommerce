@@ -1,8 +1,7 @@
 import { React, Fragment, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticated } from "../auth/helper";
-import AdminNav from "../user/AdminNav";
-import logo from "./images/logo.jpg";
+//import logo from "./images/logo4.jpg";
 
 const currentTab = (history, path) => {
   if (history.location.pathname === path) {
@@ -31,15 +30,23 @@ const Navigation = ({ history }) => {
   };
 
   return (
-    <nav className="navbar navbar-expand-sm text-white bg-dark">
-      <Link className="navbar-brand ml-1" to="/">
-        <img src={logo} alt="logo here" width="40px" />
+    <nav className="navbar navbar-expand-sm text-white bg-dark ">
+      <Link className="navbar-brand ml-1 logo" to="/">
+        {/* <img
+          className="rounded"
+          src={logo}
+          alt="logo here"
+          width="80px"
+          height="60px"
+       />*/}
+        Ecommerce_MERN
       </Link>
       <button className="navbar-toggler" type="button" onClick={myToggler}>
         <span className="text-white">
           <i class="fa fa-bars"></i>
         </span>
       </button>
+
       <div className={navbar.navbarClass}>
         <ul className="navbar-nav bg-dark">
           <li className="nav-item">

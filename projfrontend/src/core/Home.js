@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-//import "../styles.css";
-import "../newStyles.css";
-
-//import { API } from "../backend";
+import "../styles.css";
 import Base from "./Base";
 import Card from "./Card";
 import { getProducts } from "./helper/coreapicalls";

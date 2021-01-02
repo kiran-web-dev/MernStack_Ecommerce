@@ -2,13 +2,13 @@ import { React, useState } from "react";
 
 import { Link } from "react-router-dom";
 
-import "../style.css";
 import logo from "./img/kir.jpg";
 
 function AdminNav() {
   const [navbar, setNavbar] = useState({
     navbarState: false,
     navbarClass: "collapse navbar-collapse show",
+    togglerClass: "fa fa-times",
   });
 
   const myToggler = () => {
@@ -16,10 +16,12 @@ function AdminNav() {
       ? setNavbar({
           navbarState: false,
           navbarClass: "collapse navbar-collapse",
+          togglerClass: "fa fa-bars",
         })
       : setNavbar({
           navbarState: true,
           navbarClass: "collapse navbar-collapse show",
+          togglerClass: "fa fa-times",
         });
   };
 
@@ -28,7 +30,7 @@ function AdminNav() {
       <nav className="navbar">
         <button className="navbar-toggler" type="button" onClick={myToggler}>
           <span className="text-white bg-dark">
-            <i class="fa fa-bars"></i>
+            <i className={navbar.togglerClass}></i>
           </span>
         </button>
         <div id="sidebar" className={navbar.navbarClass}>

@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { getProduct } from "../admin/helper/adminapicall";
 import Base from "./Base";
-import { addItemToCart } from "./helper/cartHelper";
+import { addItemToCart, loadCart } from "./helper/cartHelper";
 import ImageHelper from "./helper/ImageHelper";
 
 function ViewProduct({ match }) {
   const [product, setProduct] = useState([]);
   const [error, setError] = useState([]);
   const [redirect, setRedirect] = useState(false);
+  const [goto, setGoto] = useState(false);
+  let cart;
 
   const loadProduct = (productId) => {
     getProduct(productId).then((data) => {
@@ -22,26 +24,53 @@ function ViewProduct({ match }) {
 
   useEffect(() => {
     loadProduct(match.params.productId);
+    isInCart(match.params.productId);
   }, []);
+
+  const isInCart = (productId) => {
+    cart = loadCart();
+    cart.forEach((obj) => {
+      if (productId === obj._id) {
+        return setGoto(true);
+      }
+    });
+  };
+
+  const showGoToCart = () => {
+    return (
+      goto && (
+        <button
+          onClick={shouldRedirect}
+          className="btn rounded btn-warning btn-md btn-block mb-3"
+        >
+          <i className="fa fa-shopping-cart"></i> Go to Cart
+        </button>
+      )
+    );
+  };
 
   const showAddToCart = () => {
     return (
-      <button
-        onClick={addThisToCart}
-        className="btn rounded btn-primary btn-md btn-block mb-3"
-      >
-        <i className="fa fa-shopping-cart"></i> Add to Cart
-      </button>
+      !goto && (
+        <button
+          onClick={addThisToCart}
+          className="btn rounded btn-primary btn-md btn-block mb-3"
+        >
+          <i className="fa fa-shopping-cart"></i> Add to Cart
+        </button>
+      )
     );
   };
 
   const addThisToCart = () => {
-    addItemToCart(product, () => setRedirect(true));
+    addItemToCart(product, () => setGoto(true));
   };
 
+  const shouldRedirect = () => {
+    setRedirect(true);
+  };
   const getRedirect = (redirect) => {
     if (redirect) {
-      //TODO: redirect to http://localhost:3000/cart
       return <Redirect to="/cart" />;
     }
   };
@@ -67,6 +96,8 @@ function ViewProduct({ match }) {
               </p>
             </p>
           </section>
+
+          {showGoToCart()}
           {showAddToCart()}
         </div>
       </div>
