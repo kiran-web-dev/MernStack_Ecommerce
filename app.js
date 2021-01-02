@@ -5,7 +5,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-
+const path = require("path");
 //import My routes
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
@@ -37,6 +37,13 @@ app.use("/api", productRoutes);
 app.use("/api", orderRoutes);
 app.use("/api", paymentRoutes);
 
+//if no API routes are hit,send React App
+app.use(function (req, res) {
+  res.sendFile(path.join(__dirname, "./client/public/index.html"));
+});
+
+//
+app.use(express.static("client/public"));
 //PORT
 const port = process.env.PORT || 8000;
 
