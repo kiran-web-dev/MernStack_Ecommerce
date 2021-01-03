@@ -4,6 +4,7 @@ import Base from "../core/Base";
 const UserDashBoard = () => {
   return (
     <Base
+      requireHeader="true"
       title="Welcome Back"
       description="Manage your Profile, Orders and more"
       className="container bg-secondary"

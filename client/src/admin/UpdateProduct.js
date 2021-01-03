@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   getProduct,
   updateProduct,
@@ -31,8 +31,6 @@ const UpdateProduct = ({ match }) => {
     price,
     stock,
     categories,
-    category,
-    loading,
     error,
     createdProduct,
     getARedirect,
@@ -72,8 +70,7 @@ const UpdateProduct = ({ match }) => {
   };
   useEffect(() => {
     preLoad(match.params.productId);
-    console.log(match.params);
-  }, []);
+  });
 
   //effect for redirecting after successfull creation of product <Redirect to="/admin/dashboard" />
   useEffect(() => {

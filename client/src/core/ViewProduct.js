@@ -25,7 +25,7 @@ function ViewProduct({ match }) {
   useEffect(() => {
     loadProduct(match.params.productId);
     isInCart(match.params.productId);
-  }, []);
+  });
 
   const isInCart = (productId) => {
     cart = loadCart();

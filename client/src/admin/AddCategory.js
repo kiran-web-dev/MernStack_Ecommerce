@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { isAuthenticated } from "../auth/helper";
-import { Link } from "react-router-dom";
 import { createCategory } from "./helper/adminapicall";
 import AdminDashBoard from "../user/AdminDashBoard";
 
@@ -62,14 +61,6 @@ const AddCategory = () => {
         </button>
       </div>
     </form>
-  );
-
-  const goBack = () => (
-    <div className="mt-5">
-      <Link className="btn btn-sm bg-success mb-3" to="/admin/dashboard">
-        Back to Dashborad
-      </Link>
-    </div>
   );
 
   return (

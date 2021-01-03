@@ -11,7 +11,7 @@ const ImageHelper = ({ product }) => {
       <Link className="" to={`/product/${product._id}`}>
         <img
           src={imgUrl}
-          alt="photo"
+          alt="product photo"
           style={{ maxHeight: "100%", maxWidth: "100%" }}
         />
       </Link>

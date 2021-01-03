@@ -24,7 +24,7 @@ const UpdateCategory = ({ match }) => {
 
   useEffect(() => {
     preLoad(match.params.categoryId);
-  }, []);
+  });
 
   const handleChange = (event) => {
     setError("");

@@ -38,15 +38,14 @@ app.use("/api", orderRoutes);
 app.use("/api", paymentRoutes);
 
 //if no API routes are hit,send React App
-app.use(function (req, res) {
-  res.sendFile(path.join(__dirname, "./client/public/index.html"));
+app.use(express.static(path.join(__dirname, "client", "build")));
+//
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
-//
-app.use(express.static("client/public"));
 //PORT
 const port = process.env.PORT || 8000;
-
 //Starting server
 app.listen(port, () => {
   console.log(`app is running at ${port}`);

@@ -12,20 +12,15 @@ const Card = ({
   addToCart = true,
   removeFromCart = false,
   setReload = (f) => f,
-  //function(f){return f}
   reload = undefined,
 }) => {
   const [redirect, setRedirect] = useState(false);
   const [goto, setGoto] = useState(false);
   const [cartupdated, setCartupdated] = useState(false);
-
-  const [count, setCount] = useState(product.count);
-  let cart;
+  //const [count, setCount] = useState(product.count);
+  let cart = [];
 
   const cardTitle = product ? product.name : "A Photo Title";
-  const cardDescription = product
-    ? product.description
-    : "Photo Default description";
   const cardPrice = product ? product.price : "Default";
 
   const addThisToCart = () => {

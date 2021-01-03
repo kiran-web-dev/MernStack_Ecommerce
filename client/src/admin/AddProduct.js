@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { createProduct, getCategories } from "./helper/adminapicall";
 import { isAuthenticated } from "../auth/helper/index";
 import AdminDashBoard from "../user/AdminDashBoard";
@@ -27,8 +27,6 @@ const AddProduct = () => {
     price,
     stock,
     categories,
-    category,
-    loading,
     error,
     createdProduct,
     getARedirect,
@@ -54,7 +52,7 @@ const AddProduct = () => {
 
   useEffect(() => {
     preLoad();
-  }, []);
+  });
 
   //effect for redirecting after successfull creation of product <Redirect to="/admin/dashboard" />
   useEffect(() => {

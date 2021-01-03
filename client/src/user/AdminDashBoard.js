@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Base from "../core/Base";
 import { isAuthenticated } from "../auth/helper/index";
-import { Link } from "react-router-dom";
 import AdminNav from "./AdminNav";
 import { useHistory } from "react-router-dom";
 
 const AdminDashBoard = ({ className = "", children }) => {
-  const { name, email, role } = isAuthenticated().user;
+  const { name, email } = isAuthenticated().user;
   let history = useHistory();
 
   const adminDashboardHome = () => {
