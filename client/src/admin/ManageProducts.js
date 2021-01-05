@@ -34,11 +34,10 @@ const ManageProducts = ({ categoryId, prodCount, setProdCount }) => {
     if (categoryId) {
       let productwithCate = [];
       products.forEach((obj) => {
-        if (categoryId === obj.category._id) {
+        if (categoryId == obj.category._id) {
           productwithCate.push(obj);
         }
       });
-      console.log(productwithCate);
       setProducts(productwithCate);
       setProdCount(productwithCate.length);
     }

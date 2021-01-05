@@ -13,7 +13,6 @@ const UpdateCategory = ({ match }) => {
 
   const preLoad = (categoryId) => {
     getCategory(categoryId).then((data) => {
-      console.log(data);
       if (data.error) {
         setError(data.error);
       } else {
@@ -24,7 +23,7 @@ const UpdateCategory = ({ match }) => {
 
   useEffect(() => {
     preLoad(match.params.categoryId);
-  });
+  }, []);
 
   const handleChange = (event) => {
     setError("");

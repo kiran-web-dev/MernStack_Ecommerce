@@ -78,10 +78,3 @@ const AddCategory = () => {
 };
 
 export default AddCategory;
-
-/*<Base
-      title="Create a Category Here"
-      description="Add new category for Tshirts"
-      className="container bg-info p-4"
-    >
-    */
