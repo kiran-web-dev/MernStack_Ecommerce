@@ -70,7 +70,7 @@ const UpdateProduct = ({ match }) => {
   };
   useEffect(() => {
     preLoad(match.params.productId);
-  });
+  }, []);
 
   //effect for redirecting after successfull creation of product <Redirect to="/admin/dashboard" />
   useEffect(() => {

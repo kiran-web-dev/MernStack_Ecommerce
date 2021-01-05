@@ -52,7 +52,7 @@ const AddProduct = () => {
 
   useEffect(() => {
     preLoad();
-  });
+  }, []);
 
   //effect for redirecting after successfull creation of product <Redirect to="/admin/dashboard" />
   useEffect(() => {

@@ -1,7 +1,9 @@
 ### `MernStack_Ecommerce`
 
+[ Demo Here ] (https://ecommerce-app-mernstack.herokuapp.com/)
+
 simple ecommerce website using MERN stack which includes CRUD operations.\
-using=["react","node js","express","mongoDB"],\
+using=["react","node js","express","mongoDB"],
 
 ### developed:
 
@@ -14,7 +16,7 @@ using=["react","node js","express","mongoDB"],\
  }, \
  `homepage`: "loads all products with add to cart and other options," \
  `navigation`:{ \
- conditional_rendering:"based on user is-> signed in, admin/normal user.",\
+ `conditional_rendering`:"based on user is-> signed in, admin/normal user.",\
  } \
  `Cart_page`:{\
  `products`:"products ready to checkout", \

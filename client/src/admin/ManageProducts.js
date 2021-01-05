@@ -5,9 +5,11 @@ import { isAuthenticated } from "../auth/helper";
 import { deleteProduct, getProducts } from "./helper/adminapicall";
 import AdminDashBoard from "../user/AdminDashBoard";
 
-const ManageProducts = (props) => {
+const ManageProducts = ({ categoryId, prodCount, setProdCount }) => {
   const [products, setProducts] = useState([]);
   const { user, token } = isAuthenticated();
+  const [productUpdated, setProductUpdated] = useState(false);
+  // const [prodCount, setProdCount] = useState("");
 
   const preLoad = () => {
     getProducts().then((data) => {
@@ -15,6 +17,7 @@ const ManageProducts = (props) => {
         console.log(data.error);
       } else {
         setProducts(data);
+        setProductUpdated(!productUpdated);
       }
     });
   };
@@ -22,6 +25,24 @@ const ManageProducts = (props) => {
   useEffect(() => {
     preLoad();
   }, []);
+
+  useEffect(() => {
+    isCategoryBased();
+  }, [productUpdated]);
+
+  const isCategoryBased = () => {
+    if (categoryId) {
+      let productwithCate = [];
+      products.forEach((obj) => {
+        if (categoryId === obj.category._id) {
+          productwithCate.push(obj);
+        }
+      });
+      console.log(productwithCate);
+      setProducts(productwithCate);
+      setProdCount(productwithCate.length);
+    }
+  };
 
   const deleteThisProduct = (productId) => {
     deleteProduct(productId, user._id, token).then((data) => {
@@ -33,9 +54,8 @@ const ManageProducts = (props) => {
     });
   };
 
-  return (
-    <AdminDashBoard>
-      <h2 className="ml-2 mb-4">All products:</h2>
+  const productDisplay = () => {
+    return (
       <div className="row">
         <div className="col-12 admin-child-theme">
           <h2 className="text-center text-black my-3">
@@ -71,7 +91,20 @@ const ManageProducts = (props) => {
           })}
         </div>
       </div>
-    </AdminDashBoard>
+    );
+  };
+
+  return (
+    <React.Fragment>
+      {categoryId && prodCount > 0
+        ? productDisplay()
+        : !categoryId && (
+            <AdminDashBoard>
+              <h2 className="ml-2 mb-4">Manage products:</h2>
+              {productDisplay()}
+            </AdminDashBoard>
+          )}
+    </React.Fragment>
   );
 };
 
