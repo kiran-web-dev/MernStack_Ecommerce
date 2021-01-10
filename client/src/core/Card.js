@@ -8,6 +8,7 @@ import {
 import ImageHelper from "./helper/ImageHelper";
 
 const Card = ({
+  classForCard,
   product,
   addToCart = true,
   removeFromCart = false,
@@ -17,12 +18,10 @@ const Card = ({
   const [redirect, setRedirect] = useState(false);
   const [goto, setGoto] = useState(false);
   const [cartupdated, setCartupdated] = useState(false);
-  //const [count, setCount] = useState(product.count);
-  let cart = [];
 
   const cardTitle = product ? product.name : "A Photo Title";
   const cardPrice = product ? product.price : "Default";
-
+  let cart = [];
   const addThisToCart = () => {
     addItemToCart(product, () => {
       addToCart = false;
@@ -102,9 +101,9 @@ const Card = ({
       )
     );
   };
-  //<span className="mycard-title">{cardTitle}</span>
+
   return (
-    <div className="mycard">
+    <div className={classForCard}>
       <div className="mycard-header">
         {getRedirect(redirect)}
         <ImageHelper product={product} />
@@ -122,6 +121,7 @@ const Card = ({
           {showGoToCart(goto)}
           {showRemoveFromCart(removeFromCart)}
         </div>
+
         <div className="col-6">
           <Link
             to={`/product/${product._id}`}

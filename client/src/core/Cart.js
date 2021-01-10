@@ -4,13 +4,20 @@ import Payment from "../paymentGateway/Payment";
 import "../styles.css";
 import Base from "./Base";
 import Card from "./Card";
-import { loadCart } from "./helper/cartHelper";
+import {
+  loadCart,
+  addItemToCart,
+  removeItemFromCart,
+} from "./helper/cartHelper";
 import { isAuthenticated } from "../auth/helper";
+import CartItem from "./CartItem";
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
   const [reload, setReload] = useState(false);
+  const [cardPrice, setCardPrice] = useState(0);
 
+  //let product.
   useEffect(() => {
     setProducts(loadCart());
   }, [reload]);
@@ -21,11 +28,9 @@ const Cart = () => {
         <div className="viewcart-prod">
           {products.map((product, index) => {
             return (
-              <div key={index} className="viewcart-prod-child mb-2">
-                <Card
+              <div key={index} className="mycart viewcart-prod-child mb-2">
+                <CartItem
                   product={product}
-                  addToCart={false}
-                  removeFromCart={true}
                   setReload={setReload}
                   reload={reload}
                 />
@@ -37,6 +42,15 @@ const Cart = () => {
       </div>
     );
   };
+
+  const getAmount = () => {
+    let amount = 0;
+    products.map((product, index) => {
+      amount = amount + product.price * product.quantity;
+    });
+    return amount;
+  };
+
   const loadAddMore = () => {
     return (
       <div className="mb-5">
@@ -86,7 +100,13 @@ const Cart = () => {
               </Link>
             </div>
           )}
-          <Payment products={products} setReload={setReload} />
+          <div className="">
+            <Payment
+              products={products}
+              setReload={setReload}
+              finalAmount={getAmount()}
+            />
+          </div>
         </div>
       </div>
     </Base>

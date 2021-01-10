@@ -23,20 +23,33 @@ export const loadCart = () => {
   return cart;
 };
 
-export const removeItemFromCart = (productId) => {
+export const removeItemFromCart = (productId, next) => {
   let cart = [];
   if (typeof window != undefined) {
     if (localStorage.getItem("cart")) {
       cart = JSON.parse(localStorage.getItem("cart"));
     }
-    cart.map((product, index) => {
+    var removeIndex = cart.map((item) => item._id).indexOf(productId);
+    removeIndex >= 0 && cart.splice(removeIndex, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    next();
+  }
+};
+
+export const updateQty = (productId, quantity, next) => {
+  let cart = [];
+  if (typeof window != undefined) {
+    if (localStorage.getItem("cart")) {
+      cart = JSON.parse(localStorage.getItem("cart"));
+    }
+    cart.map((product) => {
       if (product._id === productId) {
-        cart.splice(index, 1);
+        product["quantity"] = quantity;
       }
     });
     localStorage.setItem("cart", JSON.stringify(cart));
+    next();
   }
-  return cart;
 };
 
 export const cartEmpty = (next) => {

@@ -120,14 +120,28 @@
     justify-content: space-around;
   }
   .viewcart-prod {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* flex-wrap: wrap; */
+    /* justify-content: space-evenly; */
   }
   .viewcart-prod-child {
     max-width: 350px;
     flex: 1 0 46%;
+
+    /* position: relative; */
+    margin-bottom: 20px;
+    margin-right: 10px;
+    padding-bottom: 10px;
+    background: #fefff9;
+    color: #363636;
+    text-decoration: none;
+    -moz-box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+    box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
   }
 }
 @media (min-width: 980px) {

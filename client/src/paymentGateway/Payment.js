@@ -5,7 +5,12 @@ import { createOrder } from "../core/helper/orderHelper";
 import { isAuthenticated } from "../auth/helper";
 import DropIn from "braintree-web-drop-in-react";
 
-const Payment = ({ products, setReload = (f) => f, reload = undefined }) => {
+const Payment = ({
+  products,
+  finalAmount,
+  setReload = (f) => f,
+  reload = undefined,
+}) => {
   const [info, setInfo] = useState({
     loading: false,
     success: false,
@@ -38,7 +43,7 @@ const Payment = ({ products, setReload = (f) => f, reload = undefined }) => {
       <div>
         {info.clientToken !== null && products.length > 0 && (
           <div>
-            <h3>Your bill is {getAmount()}</h3>
+            <h3>Your bill is {finalAmount}</h3>
             <DropIn
               options={{ authorization: info.clientToken }}
               onInstance={(instance) => (info.instance = instance)}
@@ -64,7 +69,7 @@ const Payment = ({ products, setReload = (f) => f, reload = undefined }) => {
       nonce = data.nonce;
       const paymentData = {
         paymentMethodNonce: nonce,
-        amount: getAmount(),
+        amount: finalAmount,
       };
       processPayment(userId, token, paymentData)
         .then((response) => {
@@ -83,14 +88,6 @@ const Payment = ({ products, setReload = (f) => f, reload = undefined }) => {
           setInfo({ ...info, loading: false, success: false });
         });
     });
-  };
-
-  const getAmount = () => {
-    let amount = 0;
-    products.map((p) => {
-      amount = amount + p.price;
-    });
-    return amount;
   };
 
   return <div>{showbtDropIn()}</div>;
