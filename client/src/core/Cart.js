@@ -15,9 +15,8 @@ import CartItem from "./CartItem";
 const Cart = () => {
   const [products, setProducts] = useState([]);
   const [reload, setReload] = useState(false);
-  const [cardPrice, setCardPrice] = useState(0);
+  //const [cardPrice, setCardPrice] = useState(0);
 
-  //let product.
   useEffect(() => {
     setProducts(loadCart());
   }, [reload]);
@@ -28,7 +27,7 @@ const Cart = () => {
         <div className="viewcart-prod">
           {products.map((product, index) => {
             return (
-              <div key={index} className="mycart viewcart-prod-child mb-2">
+              <div key={index} className="viewcart-prod-child mb-2">
                 <CartItem
                   product={product}
                   setReload={setReload}

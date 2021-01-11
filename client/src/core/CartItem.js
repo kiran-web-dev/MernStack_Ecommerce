@@ -3,13 +3,18 @@ import { removeItemFromCart, updateQty } from "./helper/cartHelper";
 import ImageHelper from "./helper/ImageHelper";
 
 const CartItem = ({ product, setReload = (f) => f, reload = undefined }) => {
-  const [quantity, setQuantity] = useState(
-    product.quantity ? product.quantity : 1
-  );
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     changeCart();
   }, [quantity]);
+
+  const howMany = () => {
+    setQuantity(product.quantity ? product.quantity : 1);
+  };
+  useEffect(() => {
+    howMany();
+  }, []);
 
   const removeProduct = () => {
     removeItemFromCart(product._id, () => {
@@ -24,43 +29,51 @@ const CartItem = ({ product, setReload = (f) => f, reload = undefined }) => {
         });
   };
 
-  const handleChange = (value) => {
-    if (value == "-") {
-      console.log(product.quantity + " " + quantity);
-      setQuantity(quantity - 1);
-    } else {
-      setQuantity(quantity + 1);
-    }
+  const decreaseQuants = () => {
+    setQuantity(quantity - 1);
     setReload(!reload);
   };
 
-  const showBtnQuantity = (value) => {
-    return (
-      <button
-        onClick={(e) => {
-          handleChange(e.target.value);
-        }}
-        className="btn btn-sm btn-info"
-        value={value}
-      >
-        {value}
-      </button>
-    );
+  const increaseQuants = () => {
+    setQuantity(quantity + 1);
+    setReload(!reload);
   };
 
   return (
     <div>
-      <ImageHelper product={product} />
+      <span className="img-circle">
+        <ImageHelper product={product} className="cart-img" />
+      </span>
       <span className="">
-        {product.name}
-        <h6 className="">{product.price}</h6>
-        <span className="">
-          <div className="">
-            {showBtnQuantity("-")}
-            {product.quantity}
-            {showBtnQuantity("+")}
+        <span className="text-center text-black">{product.name}</span>
+
+        <p className="text-center price-text">
+          <i className="fa fa-rupee rupee"></i> {product.price}
+        </p>
+
+        <div className="quantity">
+          <div className="quantity-btn">
+            <button
+              onClick={() => {
+                decreaseQuants();
+              }}
+              className="btn btn-sm btn-info"
+            >
+              <span className="quantity-btn-text">-</span>
+            </button>
           </div>
-        </span>
+          <p className="price-text quantity-num">{product.quantity}</p>
+          <div className="quantity-btn">
+            <button
+              onClick={() => {
+                increaseQuants();
+              }}
+              className="btn btn-sm btn-info"
+            >
+              <span className="quantity-btn-text">+</span>
+            </button>
+          </div>
+        </div>
       </span>
     </div>
   );
