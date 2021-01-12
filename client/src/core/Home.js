@@ -26,7 +26,7 @@ const Home = () => {
     <Base
       requireHeader="true"
       title="Home Page"
-      description="Here is the description of Home"
+      description="Component for Introduction"
     >
       <h1 className="text-black">All of T shirts</h1>
 

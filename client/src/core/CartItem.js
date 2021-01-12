@@ -46,7 +46,6 @@ const CartItem = ({ product, setReload = (f) => f, reload = undefined }) => {
       </span>
       <span className="">
         <span className="text-center text-black">{product.name}</span>
-
         <p className="text-center price-text">
           <i className="fa fa-rupee rupee"></i> {product.price}
         </p>

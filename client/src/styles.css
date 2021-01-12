@@ -76,6 +76,20 @@
     flex-direction: column;
     justify-content: space-between;
   }
+  .viewcart-prod-child {
+    margin-bottom: 20px;
+    margin-right: 10px;
+    padding-bottom: 10px;
+    background: #fefff9;
+    color: #363636;
+    text-decoration: none;
+    -moz-box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+    box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+  }
 }
 @media (min-width: 769px) {
   .mycard {
@@ -419,7 +433,7 @@ ul.sidebar-menu li .link:focus {
 .admin-child-theme:hover,
 .admin-child-theme:focus {
   transform: translateX(1rem);
-  transition-delay: 0.5s;
+  transition-delay: 0.1s;
   background-color: #7ce7e0;
   color: firebrick;
 }
